@@ -128,7 +128,6 @@ INSERT INTO users (name,email,password) VALUES
 ('Santiago Escobar','santiago@example.com','password2'),
 ('Brayan Chavez','brayan@example.com','password3'),
 ('Steven Zheng','steven@example.com','password4'),
-('Maria Lopez','maria@example.com','password5');
 
 INSERT INTO travel_group (group_name,group_code,created_by_user_id) VALUES
 ('Spring Break Trip','SPRING2026',1),

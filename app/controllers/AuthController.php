@@ -17,7 +17,6 @@ class AuthController {
     }
 
     public function register() {
-
         $name = Request::input('name', '');
         $email = Request::input('email', '');
         $password = Request::input('password', '');
@@ -46,7 +45,6 @@ class AuthController {
     }
 
     public function login() {
-
         $email = Request::input('email', '');
         $password = Request::input('password', '');
 
@@ -59,7 +57,7 @@ class AuthController {
             return;
         }
 
-        Session::put('user_id', $user['id']);
+        Session::put('user_id', $user['user_id']);
         Session::put('user_name', $user['name']);
 
         Response::redirect('/dashboard');
@@ -70,19 +68,21 @@ class AuthController {
         Response::redirect('/login');
     }
 
-    public function home() {
+    public function showHome() {
         Response::view(__DIR__ . '/../views/home.php');
     }
 
-    public function dashboard() {
+    public function showDashboard() {
 
         if (!Session::has('user_id')) {
             Response::redirect('/login');
+            return;
         }
-
+    
         $name = Session::get('user_name', 'User');
-
-        echo "<h1>Welcome, " . htmlspecialchars($name) . "</h1>";
-        echo '<form method="POST" action="/logout"><button type="submit">Logout</button></form>';
+    
+        Response::view(__DIR__ . '/../views/dashboard.php', [
+            'name' => $name
+        ]);
     }
 }
