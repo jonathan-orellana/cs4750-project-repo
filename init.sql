@@ -51,7 +51,8 @@ CREATE TABLE expense (
     trip_id INT NOT NULL,
     paid_by_user_id INT NOT NULL,
     FOREIGN KEY (trip_id) REFERENCES trip(trip_id),
-    FOREIGN KEY (paid_by_user_id) REFERENCES users(user_id)
+    FOREIGN KEY (paid_by_user_id) REFERENCES users(user_id),
+    CHECK (amount > 0)
 );
 
 CREATE TABLE expense_share (
@@ -73,7 +74,9 @@ CREATE TABLE payment (
     to_user_id INT NOT NULL,
     FOREIGN KEY (trip_id) REFERENCES trip(trip_id),
     FOREIGN KEY (from_user_id) REFERENCES users(user_id),
-    FOREIGN KEY (to_user_id) REFERENCES users(user_id)
+    FOREIGN KEY (to_user_id) REFERENCES users(user_id),
+    CHECK (amount > 0),
+    CHECK (from_user_id <> to_user_id)
 );
 
 CREATE TABLE activity (
@@ -98,6 +101,27 @@ CREATE TABLE group_invite (
     FOREIGN KEY (group_id) REFERENCES travel_group(group_id),
     FOREIGN KEY (invited_by_user_id) REFERENCES users(user_id)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER check_share_amount
+BEFORE INSERT ON expense_share
+FOR EACH ROW
+BEGIN
+    DECLARE total_amount DECIMAL(10,2);
+
+    SELECT amount
+    INTO total_amount
+    FROM expense
+    WHERE expense_id = NEW.expense_id;
+
+    IF NEW.share_amount > total_amount THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'share_amount cannot be greater than expense amount';
+    END IF;
+END$$
+
+DELIMITER ;
 
 INSERT INTO users (name,email,password) VALUES
 ('Carlos Orellana','carlos@example.com','password1'),
