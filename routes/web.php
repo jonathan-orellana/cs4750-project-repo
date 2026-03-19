@@ -9,4 +9,5 @@ $router->get('/register', [AuthController::class, 'showRegister']);
 $router->post('/register', [AuthController::class, 'register']);
 
 $router->post('/logout', [AuthController::class, 'logout']);
+
 $router->get('/dashboard', [AuthController::class, 'showDashboard']);
