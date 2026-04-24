@@ -130,27 +130,61 @@ class Group {
         return (float) $statement->fetchColumn();
     }
 
-    public function getExpensesForGroup($groupId) {
-        $statement = $this->pdo->prepare(
-            'SELECT u.name AS paid_by_name,
-                    e.category,
-                    e.description,
-                    e.amount
-             FROM expense e
-             INNER JOIN trip t
-                 ON t.trip_id = e.trip_id
-             INNER JOIN users u
-                 ON u.user_id = e.paid_by_user_id
-             WHERE t.group_id = :group_id
-             ORDER BY e.expense_date DESC, e.expense_id DESC'
-        );
+public function getExpensesForGroup($groupId, $filters = []) {
+    $sql =
+        'SELECT u.name AS paid_by_name,
+                e.category,
+                e.description,
+                e.amount,
+                e.expense_date
+         FROM expense e
+         INNER JOIN trip t
+             ON t.trip_id = e.trip_id
+         INNER JOIN users u
+             ON u.user_id = e.paid_by_user_id
+         WHERE t.group_id = :group_id';
 
-        $statement->execute([
-            'group_id' => $groupId
-        ]);
+    $params = [
+        'group_id' => $groupId
+    ];
 
-        return $statement->fetchAll();
+    if (!empty($filters['category'])) {
+        $sql .= ' AND e.category = :category';
+        $params['category'] = $filters['category'];
     }
+
+    if (!empty($filters['payer'])) {
+        $sql .= ' AND u.name LIKE :payer';
+        $params['payer'] = '%' . $filters['payer'] . '%';
+    }
+
+    if (!empty($filters['date'])) {
+        $sql .= ' AND e.expense_date = :date';
+        $params['date'] = $filters['date'];
+    }
+
+    $sort = $filters['sort'] ?? 'date_desc';
+
+    if ($sort === 'amount_asc') {
+        $sql .= ' ORDER BY e.amount ASC';
+    }
+    elseif ($sort === 'amount_desc') {
+        $sql .= ' ORDER BY e.amount DESC';
+    }
+    elseif ($sort === 'payer_asc') {
+        $sql .= ' ORDER BY u.name ASC';
+    }
+    elseif ($sort === 'date_asc') {
+        $sql .= ' ORDER BY e.expense_date ASC';
+    }
+    else {
+        $sql .= ' ORDER BY e.expense_date DESC, e.expense_id DESC';
+    }
+
+    $statement = $this->pdo->prepare($sql);
+    $statement->execute($params);
+    return $statement->fetchAll();
+}
 
     public function getSplitSummaryForGroup($groupId) {
         $statement = $this->pdo->prepare(

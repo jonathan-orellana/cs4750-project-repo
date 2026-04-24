@@ -71,6 +71,38 @@
 
     <h2>Expenses</h2>
 
+    <form method="GET" action="/groups/dashboard">
+        <input type="hidden" name="id" value="<?= htmlspecialchars((string) $group['group_id'], ENT_QUOTES, 'UTF-8') ?>">
+
+        <label>Category</label>
+        <select name="category">
+            <option value="">All</option>
+            <?php foreach ($categories as $c): ?>
+                <option value="<?= $c ?>" <?= ($filters['category'] ?? '') === $c ? 'selected' : '' ?>>
+                    <?= $c ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <label>Payer</label>
+        <input type="text" name="payer" value="<?= htmlspecialchars($filters['payer'] ?? '') ?>">
+
+        <label>Date</label>
+        <input type="date" name="date" value="<?= htmlspecialchars($filters['date'] ?? '') ?>">
+
+        <label>Sort</label>
+        <select name="sort">
+            <option value="date_desc">Newest</option>
+            <option value="date_asc">Oldest</option>
+            <option value="amount_desc">Amount High</option>
+            <option value="amount_asc">Amount Low</option>
+            <option value="payer_asc">Payer A-Z</option>
+        </select>
+
+        <button type="submit">Apply</button>
+        <a href="/groups/dashboard?id=<?= urlencode((string) $group['group_id']) ?>">Clear</a>
+    </form>
+
     <?php if (empty($expenses)): ?>
         <p>No expenses have been added yet.</p>
     <?php else: ?>

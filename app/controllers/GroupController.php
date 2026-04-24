@@ -40,7 +40,19 @@ class GroupController {
         Response::view(__DIR__ . '/../views/groups/dashboard.php', [
             'group' => $group,
             'totalExpenseAmount' => $this->groupModel->getTotalExpenseAmountForGroup((int) $group['group_id']),
-            'expenses' => $this->groupModel->getExpensesForGroup((int) $group['group_id']),
+            'expenses' => $this->groupModel->getExpensesForGroup((int) $group['group_id'], [
+                'category' => Request::input('category'),
+                'payer' => Request::input('payer'),
+                'date' => Request::input('date'),
+                'sort' => Request::input('sort')
+            ]),
+            'filters' => [
+                'category' => Request::input('category'),
+                'payer' => Request::input('payer'),
+                'date' => Request::input('date'),
+                'sort' => Request::input('sort')
+            ],
+            'categories' => self::EXPENSE_CATEGORIES,
             'splitSummary' => $this->groupModel->getSplitSummaryForGroup((int) $group['group_id']),
             'statusMessage' => Request::input('message')
         ]);
