@@ -60,7 +60,7 @@ class AuthController {
         Session::put('user_id', $user['user_id']);
         Session::put('user_name', $user['name']);
 
-        Response::redirect('/dashboard');
+        Response::redirect('/');
     }
 
     public function logout() {
@@ -73,11 +73,7 @@ class AuthController {
     }
 
     public function showDashboard() {
-
-        if (!Session::has('user_id')) {
-            Response::redirect('/login');
-            return;
-        }
+        Auth::requireUser($this->userModel);
     
         $name = Session::get('user_name', 'User');
     

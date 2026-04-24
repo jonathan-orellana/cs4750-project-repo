@@ -14,9 +14,12 @@ require_once __DIR__ . '/../app/utilities/Request.php';
 require_once __DIR__ . '/../app/utilities/Response.php';
 require_once __DIR__ . '/../app/utilities/Router.php';
 require_once __DIR__ . '/../app/utilities/Session.php';
+require_once __DIR__ . '/../app/utilities/Auth.php';
 
 require_once __DIR__ . '/../app/models/User.php';
+require_once __DIR__ . '/../app/models/Group.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/GroupController.php';
 
 $router = new Router();
 

@@ -18,6 +18,7 @@ CREATE TABLE users (
 CREATE TABLE travel_group (
     group_id INT AUTO_INCREMENT PRIMARY KEY,
     group_name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL,
     group_code VARCHAR(50) NOT NULL UNIQUE,
     created_by_user_id INT NOT NULL,
     FOREIGN KEY (created_by_user_id) REFERENCES users(user_id)
@@ -140,9 +141,9 @@ INSERT INTO users (name, email, password) VALUES
 ('Steven Zheng', 'steven@example.com', 'password4'),
 ('Guest Member', 'guest@example.com', 'password5');
 
-INSERT INTO travel_group (group_name, group_code, created_by_user_id) VALUES
-('Spring Break Trip', 'SPRING2026', 1),
-('NYC Weekend', 'NYC2026', 2);
+INSERT INTO travel_group (group_name, description, group_code, created_by_user_id) VALUES
+('Spring Break Trip', 'Friends planning a shared spring break trip.', 'SPRING2026', 1),
+('NYC Weekend', 'A quick weekend group trip to New York City.', 'NYC2026', 2);
 
 INSERT INTO group_member (group_id, user_id, role, joined_at) VALUES
 (1, 1, 'owner', '2026-02-01 10:00:00'),

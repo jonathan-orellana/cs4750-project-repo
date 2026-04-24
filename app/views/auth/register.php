@@ -5,6 +5,8 @@
     <title>Register</title>
 </head>
 <body>
+    <?php require __DIR__ . '/../partials/navbar.php'; ?>
+
     <h2>Register</h2>
 
     <?php if (!empty($error)): ?>

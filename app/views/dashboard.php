@@ -6,6 +6,8 @@
 
 <body>
 
+<?php require __DIR__ . '/partials/navbar.php'; ?>
+
 <h1>Welcome</h1>
 
 <form method="POST" action="/logout">
