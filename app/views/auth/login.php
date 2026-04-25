@@ -2,31 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <?php require __DIR__ . '/../partials/fonts.php'; ?>
+    <link rel="stylesheet" href="/styles/login.css">
 </head>
-<body>
-    <h2>Login</h2>
+<body class="login-page">
+    <main class="login-shell">
+        <section class="login-brand" aria-label="Travel Cost Planner"></section>
 
-    <?php if (!empty($error)): ?>
-        <p style="color:red;">
-            <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
-        </p>
-    <?php endif; ?>
+        <section class="login-panel" aria-labelledby="login-heading">
+            <form class="login-form" method="POST" action="/login">
+                <h1 id="login-heading">Login</h1>
 
-    <form method="POST" action="/login">
-        <div>
-            <label>Email</label>
-            <input type="email" name="email" required>
-        </div>
+                <?php if (!empty($error)): ?>
+                    <p class="form-error">
+                        <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+                <?php endif; ?>
 
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" required>
-        </div>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" placeholder="Email" required>
+                </label>
 
-        <button type="submit">Login</button>
-    </form>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" placeholder="Password" required>
+                </label>
 
-    <p><a href="/register">Create account</a></p>
+                <button type="submit">Login</button>
+
+                <p class="signup-copy">
+                    Don't have an account?
+                    <a href="/register">Sign Up</a>
+                </p>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

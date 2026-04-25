@@ -58,6 +58,24 @@ class GroupController {
         ]);
     }
 
+    public function showUserExpenses() {
+        $authenticatedUser = Auth::requireUser($this->userModel);
+        $groupId = (int) Request::input('group_id', 0);
+        $group = $this->groupModel->findGroupForUser($groupId, (int) $authenticatedUser['user_id']);
+
+        if (!$group) {
+            Response::redirect('/groups?message=' . urlencode('Group not found.'));
+        }
+
+        Response::view(__DIR__ . '/../views/groups/user-expenses.php', [
+            'group' => $group,
+            'expenses' => $this->groupModel->getExpensesForGroupPaidByUser(
+                (int) $group['group_id'],
+                (int) $authenticatedUser['user_id']
+            )
+        ]);
+    }
+
     public function showSplitCalculation() {
         $authenticatedUser = Auth::requireUser($this->userModel);
         $groupId = (int) Request::input('id', 0);

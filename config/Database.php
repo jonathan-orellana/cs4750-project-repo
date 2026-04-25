@@ -23,7 +23,12 @@ class Database {
 
             } catch (PDOException $e) {
 
-                $logFile = __DIR__ . '/../storage/logs/app.log';
+                $logDir = __DIR__ . '/../storage/logs';
+                $logFile = $logDir . '/app.log';
+
+                if (!is_dir($logDir)) {
+                    mkdir($logDir, 0775, true);
+                }
 
                 $message = date('Y-m-d H:i:s') .
                            " DATABASE ERROR: " .

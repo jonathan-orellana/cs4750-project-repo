@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Your Groups</title>
+    <?php require __DIR__ . '/../partials/fonts.php'; ?>
+    <link rel="stylesheet" href="/styles/global.css">
 </head>
 <body>
     <?php require __DIR__ . '/../partials/navbar.php'; ?>

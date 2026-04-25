@@ -3,3 +3,6 @@ Carlos Orellana (qrk9cs)
 Santiago Escobar (ywq8ms)
 Brayan Chavez (njr8kz)
 Steven Zheng (cfb6rj)
+
+## Note: 
+To run use: php -S localhost:8000 -t public

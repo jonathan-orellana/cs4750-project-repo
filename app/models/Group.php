@@ -186,6 +186,28 @@ public function getExpensesForGroup($groupId, $filters = []) {
     return $statement->fetchAll();
 }
 
+    public function getExpensesForGroupPaidByUser($groupId, $userId) {
+        $statement = $this->pdo->prepare(
+            'SELECT e.category,
+                    e.description,
+                    e.amount,
+                    e.expense_date
+             FROM expense e
+             INNER JOIN trip t
+                 ON t.trip_id = e.trip_id
+             WHERE t.group_id = :group_id
+               AND e.paid_by_user_id = :user_id
+             ORDER BY e.expense_date DESC, e.expense_id DESC'
+        );
+
+        $statement->execute([
+            'group_id' => $groupId,
+            'user_id' => $userId
+        ]);
+
+        return $statement->fetchAll();
+    }
+
     public function getSplitSummaryForGroup($groupId) {
         $statement = $this->pdo->prepare(
             'SELECT u.user_id,

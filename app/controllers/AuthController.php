@@ -17,13 +17,29 @@ class AuthController {
     }
 
     public function register() {
-        $name = Request::input('name', '');
-        $email = Request::input('email', '');
-        $password = Request::input('password', '');
+        $firstName = trim((string) Request::input('first_name', ''));
+        $lastName = trim((string) Request::input('last_name', ''));
+        $email = trim((string) Request::input('email', ''));
+        $password = (string) Request::input('password', '');
+        $confirmPassword = (string) Request::input('confirm_password', '');
+        $formData = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $email
+        ];
 
-        if ($name == '' || $email == '' || $password == '') {
+        if ($firstName === '' || $lastName === '' || $email === '' || $password === '' || $confirmPassword === '') {
             Response::view(__DIR__ . '/../views/auth/register.php', [
-                'error' => 'All fields are required.'
+                'error' => 'All fields are required.',
+                'formData' => $formData
+            ]);
+            return;
+        }
+
+        if ($password !== $confirmPassword) {
+            Response::view(__DIR__ . '/../views/auth/register.php', [
+                'error' => 'Passwords do not match.',
+                'formData' => $formData
             ]);
             return;
         }
@@ -32,12 +48,14 @@ class AuthController {
 
         if ($existingUser) {
             Response::view(__DIR__ . '/../views/auth/register.php', [
-                'error' => 'Email already exists.'
+                'error' => 'Email already exists.',
+                'formData' => $formData
             ]);
             return;
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $name = trim($firstName . ' ' . $lastName);
 
         $this->userModel->create($name, $email, $hashedPassword);
 

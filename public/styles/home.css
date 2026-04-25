@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+body.home-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #ffffff;
+    color: #050505;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.home-page > nav {
+    width: min(500px, calc(100% - 32px));
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    z-index: 10;
+    transform: translateX(-50%);
+    padding: 0 26px;
+    min-height: 52px;
+    border-radius: 28px;
+    background: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.home-page > nav a,
+.home-page > nav button {
+    border: 0;
+    background: transparent;
+    color: #050505;
+    cursor: pointer;
+    font: 700 12px/1 "Poppins", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.home-page > nav form {
+    margin: 0;
+}
+
+.home-hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    margin-top: -8vh;
+    text-align: center;
+}
+
+.hero-content h1 {
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: 0;
+}
+
+.hero-content h1 span {
+    color: #1296f7;
+}
+
+.hero-actions {
+    margin-top: 42px;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+}
+
+.button {
+    min-width: 166px;
+    min-height: 50px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.button-primary {
+    background: #1296f7;
+}
+
+.button-muted {
+    background: #c6c6c8;
+}
+
+.finance-chart {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: min(34vh, 280px);
+    background: linear-gradient(to bottom, rgba(18, 150, 247, 0), rgba(18, 150, 247, 0.08));
+}
+
+.chart-line {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chart-line-main {
+    stroke: rgba(18, 150, 247, 0.62);
+    stroke-width: 4;
+}
+
+.chart-line-soft {
+    stroke: rgba(18, 150, 247, 0.28);
+    stroke-width: 4;
+    stroke-dasharray: 8 10;
+}
+
+@media (max-width: 720px) {
+    .home-page > nav {
+        gap: 22px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .button {
+        min-width: 180px;
+    }
+
+    .finance-chart {
+        height: 38vh;
+    }
+}

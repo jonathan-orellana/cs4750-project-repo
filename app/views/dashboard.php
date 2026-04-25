@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <?php require __DIR__ . '/partials/fonts.php'; ?>
+    <link rel="stylesheet" href="/styles/global.css">
     <title>Travel Cost Planner</title>
 </head>
 

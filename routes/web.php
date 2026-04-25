@@ -5,6 +5,7 @@ $router->get('/', ['AuthController', 'showHome']);
 $router->get('/groups', [GroupController::class, 'showGroups']);
 $router->get('/groups/dashboard', [GroupController::class, 'showGroupDashboard']);
 $router->get('/groups/split', [GroupController::class, 'showSplitCalculation']);
+$router->get('/groups/expenses', [GroupController::class, 'showUserExpenses']);
 $router->get('/groups/expenses/create', [GroupController::class, 'showCreateExpenseForm']);
 $router->post('/groups/expenses/create', [GroupController::class, 'createExpense']);
 $router->get('/groups/join', [GroupController::class, 'handleJoinGroup']);
