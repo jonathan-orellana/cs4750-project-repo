@@ -28,6 +28,7 @@
                     id="group_code"
                     type="text"
                     name="group_code"
+                    placeholder="Enter Group ID"
                     value="<?= htmlspecialchars($formData['group_code'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                     required
                 >
@@ -36,8 +37,8 @@
             </form>
 
             <p class="join-group-footer">
-                Doesn’t have a section?
-                <a href="/groups/create">Create a section</a>
+                Don't have a group ID? 
+                <a href="/groups/create">Create a group</a>
             </p>
         </section>
     </main>
