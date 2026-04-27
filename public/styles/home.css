@@ -3,7 +3,6 @@
 }
 
 body.home-page {
-    margin: 0;
     min-height: 100vh;
     background: #ffffff;
     color: #050505;
@@ -11,41 +10,9 @@ body.home-page {
     overflow-x: hidden;
 }
 
-.home-page > nav {
-    width: min(500px, calc(100% - 32px));
-    position: fixed;
-    top: 24px;
-    left: 50%;
-    z-index: 10;
-    transform: translateX(-50%);
-    padding: 0 26px;
-    min-height: 52px;
-    border-radius: 28px;
-    background: #eeeeee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.home-page > nav a,
-.home-page > nav button {
-    border: 0;
-    background: transparent;
-    color: #050505;
-    cursor: pointer;
-    font: 700 12px/1 "Poppins", Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.home-page > nav form {
-    margin: 0;
-}
-
 .home-hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 94px);
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -85,7 +52,7 @@ body.home-page {
     justify-content: center;
     color: #ffffff;
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -97,39 +64,7 @@ body.home-page {
     background: #c6c6c8;
 }
 
-.finance-chart {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: min(34vh, 280px);
-    background: linear-gradient(to bottom, rgba(18, 150, 247, 0), rgba(18, 150, 247, 0.08));
-}
-
-.chart-line {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.chart-line-main {
-    stroke: rgba(18, 150, 247, 0.62);
-    stroke-width: 4;
-}
-
-.chart-line-soft {
-    stroke: rgba(18, 150, 247, 0.28);
-    stroke-width: 4;
-    stroke-dasharray: 8 10;
-}
-
 @media (max-width: 720px) {
-    .home-page > nav {
-        gap: 22px;
-    }
-
     .hero-content h1 {
         font-size: 36px;
     }
@@ -142,9 +77,5 @@ body.home-page {
 
     .button {
         min-width: 180px;
-    }
-
-    .finance-chart {
-        height: 38vh;
     }
 }

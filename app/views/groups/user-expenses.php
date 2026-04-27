@@ -11,6 +11,7 @@ $total = array_reduce($expenses, function ($carry, $expense) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Expenses</title>
     <?php require __DIR__ . '/../partials/fonts.php'; ?>
+    <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="/styles/user-expenses.css">
 </head>
 <body class="expenses-page">

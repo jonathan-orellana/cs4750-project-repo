@@ -1,0 +1,152 @@
+body.groups-page {
+    min-height: 100vh;
+    background: #ffffff;
+    color: #111111;
+}
+
+.groups-main {
+    width: min(100%, 1260px);
+    margin: 0 auto;
+    padding: 32px 40px 28px;
+}
+
+.groups-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.groups-title {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.groups-status {
+    margin: 0 0 24px;
+    color: #16934f;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.groups-create-button {
+    padding: 16px 28px;
+    border-radius: 14px;
+    background: #1296f7;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.groups-empty {
+    font-size: 16px;
+    font-weight: 700;
+    color: #7c7f84;
+}
+
+.groups-list {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.group-card {
+    width: 100%;
+    padding: 38px 40px;
+    border: 2px solid #d9d9d9;
+    border-radius: 22px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.group-card__content {
+    min-width: 0;
+}
+
+.group-card__title {
+    margin: 0 0 16px;
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.group-card__meta {
+    margin: 0;
+    color: #8b8d92;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.group-card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.group-card__dashboard {
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #1296f7;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.group-card__edit {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #d3d5d8;
+    text-decoration: none;
+}
+
+.group-card__edit svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+@media (max-width: 720px) {
+    .groups-main {
+        padding: 24px 16px 24px;
+    }
+
+    .groups-header {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 28px;
+    }
+
+    .groups-create-button {
+        width: 100%;
+    }
+
+    .group-card {
+        min-height: 154px;
+        padding: 28px 24px;
+    }
+
+    .group-card__title {
+        font-size: 22px;
+    }
+}

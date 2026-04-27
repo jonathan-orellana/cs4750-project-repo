@@ -69,13 +69,13 @@ body.login-page {
     border-bottom: 2px solid #d4d4d4;
     background: transparent;
     color: #050505;
-    font: 700 14px "Poppins", Arial, Helvetica, sans-serif;
+    font: 400 14px "Poppins", Arial, Helvetica, sans-serif;
     padding: 0 0 7px;
 }
 
 .login-form input::placeholder {
     color: #c9c9c9;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .login-form input:focus {
@@ -99,13 +99,13 @@ body.login-page {
     margin: 36px 0 0;
     color: #050505;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
 }
 
 .signup-copy a {
     color: #050505;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 

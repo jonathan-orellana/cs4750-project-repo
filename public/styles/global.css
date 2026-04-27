@@ -3,5 +3,120 @@
 }
 
 body {
+    margin: 0;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    min-height: 94px;
+    padding: 18px 32px;
+    background: #1296f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.site-nav__links,
+.site-nav__actions,
+.site-nav__form {
+    display: flex;
+    align-items: center;
+}
+
+.site-nav__links {
+    gap: 44px;
+    margin-left: auto;
+}
+
+.site-nav__actions {
+    margin-left: 28px;
+}
+
+.site-nav__form {
+    margin: 0;
+}
+
+.site-nav__link,
+.site-nav__button {
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    font: "Poppins", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-nav__link {
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    padding: 10px 0;
+}
+
+.site-nav__link.is-active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+    left: 0;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.site-nav__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 34px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #ffffff;
+    color: #1296f7;
+}
+
+@media (max-width: 900px) {
+    .site-nav {
+        min-height: 84px;
+        padding: 16px 20px;
+        gap: 18px;
+    }
+
+    .site-nav__links {
+        gap: 24px;
+    }
+
+    .site-nav__link,
+    .site-nav__button {
+        font-size: 16px;
+    }
+
+    .site-nav__button {
+        min-height: 50px;
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .site-nav__links {
+        margin-left: 0;
+        order: 2;
+    }
+
+    .site-nav__actions {
+        margin-left: 0;
+        order: 1;
+    }
 }

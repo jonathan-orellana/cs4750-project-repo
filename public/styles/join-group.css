@@ -1,0 +1,110 @@
+body.join-group-page {
+    min-height: 100vh;
+    background: #ffffff;
+    color: #111111;
+}
+
+.join-group-main {
+    min-height: calc(100vh - 94px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px 64px;
+}
+
+.join-group-card {
+    width: min(100%, 520px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.join-group-title {
+    margin: 0 0 34px;
+    font-size: 28px;
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+.join-group-message {
+    margin: 0 0 18px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #d92d20;
+}
+
+.join-group-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.join-group-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.join-group-input {
+    width: min(100%, 355px);
+    padding: 8px 20px;
+    border: 1px solid #d4d4d4;
+    border-radius: 22px;
+    outline: none;
+    color: #111111;
+    background: #ffffff;
+    font: 500 18px/1 "Poppins", Arial, Helvetica, sans-serif;
+    text-align: center;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.join-group-input:focus {
+    border-color: #1296f7;
+    box-shadow: 0 0 0 2px rgba(18, 150, 247, 0.12);
+}
+
+.join-group-button {
+    margin-top: 34px;
+    padding: 16px 36px;
+    border: 0;
+    border-radius: 16px;
+    background: #1296f7;
+    color: #ffffff;
+    font: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.join-group-footer {
+    margin: 72px 0 0;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.join-group-footer a {
+    color: #111111;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 720px) {
+    .join-group-main {
+        min-height: calc(100vh - 84px);
+        padding: 24px 20px 40px;
+    }
+
+    .join-group-title {
+        font-size: 34px;
+    }
+
+    .join-group-footer {
+        margin-top: 56px;
+        font-size: 18px;
+    }
+}

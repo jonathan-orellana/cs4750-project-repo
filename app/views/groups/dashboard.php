@@ -23,6 +23,7 @@ $hasActiveFilters = !empty($filters['category']) || !empty($filters['payer']) ||
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Dashboard</title>
     <?php require __DIR__ . '/../partials/fonts.php'; ?>
+    <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body class="group-dashboard-page">
@@ -181,7 +182,7 @@ $hasActiveFilters = !empty($filters['category']) || !empty($filters['payer']) ||
                     <?php endif; ?>
                 </div>
 
-                <a class="back-link" href="/groups">Back to Groups</a>
+                <a class="button button-primary back-button" href="/groups">Back to Groups</a>
             </div>
         </section>
     </main>
